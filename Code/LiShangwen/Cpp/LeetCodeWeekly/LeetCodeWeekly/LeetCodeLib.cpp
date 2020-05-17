@@ -1,4 +1,5 @@
 #include "LeetCodeLib.h"
+#include "map"
 LeetCodeLib::LeetCodeLib(){
 }
 
@@ -28,15 +29,14 @@ int PreSum(vector<int>& nums, int index)
 bool LeetCodeLib::checkSubarraySum(vector<int>& nums, int k)
 {
 	if (nums.size() < 2) return false;
-	for (int i = 1; i < nums.size(); i++) {
-		for (int j = 0; j <= i - 1; j++) {
-			if (k != 0) {
-				if ((PreSum(nums, i) - PreSum(nums, j - 1)) % k == 0)
-					return true;
-			}
-			else if ((PreSum(nums, i) - PreSum(nums, j - 1)) == 0)
-				return true;
-		}
+	map<int, int> cacheMap;
+	cacheMap[0] = -1;
+	int sum = 0;
+	for (int i = 0; i < nums.size(); i++) {
+		sum += nums[i];
+		if(k!=0) sum %= k;
+		if (cacheMap.count(sum) && i - cacheMap[sum] > 1) return true;
+		if (!cacheMap.count(sum)) cacheMap[sum] = i;
 	}
 	return false;
 }
