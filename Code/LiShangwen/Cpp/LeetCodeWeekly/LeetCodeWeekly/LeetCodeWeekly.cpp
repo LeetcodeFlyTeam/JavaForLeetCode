@@ -17,3 +17,8 @@ void numPairsDivisibleBy60Test(LeetCodeLib lib)
     auto result = lib.numPairsDivisibleBy60(input);
     cout << result<<endl;
 }
+
+void checkSubarraySumTest(vector<int>& nums, int k)
+{
+
+}
