@@ -40,6 +40,10 @@ Release
 ipch
 *sd
 *.opendb
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
 .vs/LeetCodeImplemention/v15/Browse.VC.opendb
 
 .vs
