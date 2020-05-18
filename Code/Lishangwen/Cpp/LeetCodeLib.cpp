@@ -11,17 +11,8 @@ int LeetCodeLib::numPairsDivisibleBy60(vector<int>& time) {
 	return result;
 }
 
-int PreSum(vector<int>& nums, int index)
-{
-	if (index >= nums.size() || index < 0) return 0;
-	int sum = 0;
-	for (int i = 0; i <= index; i++)
-		sum += nums[i];
-	return sum;
-}
 
-bool LeetCodeLib::checkSubarraySum(vector<int>& nums, int k)
-{
+bool LeetCodeLib::checkSubarraySum(vector<int>& nums, int k){
 	if (nums.size() < 2) return false;
 	map<int, int> cacheMap;
 	cacheMap[0] = -1;
