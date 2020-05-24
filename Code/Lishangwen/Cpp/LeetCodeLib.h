@@ -1,6 +1,7 @@
 #pragma once
 #include "vector"
 #include<algorithm>
+#include <iostream>
 using namespace std;
 
 // Definition for a binary tree node.
@@ -17,4 +18,5 @@ public:
 	int numPairsDivisibleBy60(vector<int>& time);
 	bool checkSubarraySum(vector<int>& nums, int k);
 	int longestUnivaluePath(TreeNode* root);
+	int uniquePaths(int m, int n);
 };
