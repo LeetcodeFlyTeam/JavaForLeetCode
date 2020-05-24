@@ -2,7 +2,8 @@
 #include "Main.h"
 int main(){
 	LeetCodeLib lib = LeetCodeLib();
-	numPairsDivisibleBy60Test(lib);
+	cout << lib.uniquePaths(3, 2);
+	//numPairsDivisibleBy60Test(lib);
 }
 
 
