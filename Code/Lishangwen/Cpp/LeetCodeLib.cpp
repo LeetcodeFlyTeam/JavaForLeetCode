@@ -25,3 +25,21 @@ bool LeetCodeLib::checkSubarraySum(vector<int>& nums, int k){
 	}
 	return false;
 }
+
+// 最长同值路径递归函数
+int longetUnivalePathTraceback(TreeNode* node, int& result) {
+	if (node == NULL) return 0;
+	int leftLen = longetUnivalePathTraceback(node->left, result);
+	int rightLen = longetUnivalePathTraceback(node->right, result);
+	leftLen = (node->left != NULL && node->left->val == node->val) ? leftLen + 1 : 0;
+	rightLen = (node->right!=NULL && node->right->val == node->val) ? rightLen + 1 : 0;
+	result = max(result, leftLen + rightLen);
+	return max(leftLen, rightLen);   // 根节点下只能选一条路径
+}
+
+// 687.最长同值路径
+int LeetCodeLib::longestUnivaluePath(TreeNode* root) {
+	int result = 0;
+	longetUnivalePathTraceback(root, result);
+	return result;
+}
