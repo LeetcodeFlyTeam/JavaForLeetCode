@@ -20,4 +20,5 @@ public:
 	int longestUnivaluePath(TreeNode* root);
 	int uniquePaths(int m, int n);
 	int findJudge(int N, vector<vector<int>>& trust);
+	int findJudgeArrayCache(int N, vector<vector<int>>& trust);
 };

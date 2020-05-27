@@ -4,7 +4,7 @@ int main(){
 	LeetCodeLib lib = LeetCodeLib();
 	vector<vector<int>> a;
 	a.push_back({ 1,2 });
-	cout << lib.findJudge(2, a);
+	cout << lib.findJudgeArrayCache(2, a);
 	//numPairsDivisibleBy60Test(lib);
 }
 
