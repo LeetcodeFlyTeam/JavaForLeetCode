@@ -1,5 +1,6 @@
 #include "LeetCodeLib.h"
 #include "map"
+#include "queue"
 int LeetCodeLib::numPairsDivisibleBy60(vector<int>& time) {
 	if (time.size() < 2) return 0;
 	int result = 0;
@@ -84,3 +85,54 @@ int LeetCodeLib::findJudgeArrayCache(int N, vector<vector<int>>& trust) {
 	}
 	return -1;
 }
+
+
+// 1311. 获取你好友已观看的视频
+vector<string> LeetCodeLib::watchedVideosByFriends(vector<vector<string>>& watchedVideos, vector<vector<int>>& friends, int id, int level) {
+	vector<bool> visitTag(friends.size());
+	queue<int> q;
+	q.push(id);
+	visitTag[id] = true;
+	int queueSize;
+	for (int i = 1; i <= level; i++) {
+		queueSize = q.size();
+		for (int j = 0; j < queueSize; j++) {
+			int curId = q.front();
+			q.pop();
+			for (auto friendId : friends[curId]) {
+				if (!visitTag[friendId]) {
+					q.push(friendId);
+					visitTag[friendId] = true;
+				}
+			}
+		}
+	}
+	queueSize = q.size();
+	map<string, int> videoMap;
+	for (int k = 0; k < queueSize; k++) {
+		int tempId = q.front();
+		q.pop();
+		for (auto videoName : watchedVideos[tempId]) {
+			if (videoMap.find(videoName) != videoMap.end()) {
+				videoMap[videoName]++;
+			}
+			else{
+				videoMap[videoName] = 1;
+			}
+		}
+	}
+	vector<pair<string, int> > vpr;
+	for (map<string, int>::iterator it = videoMap.begin(); it != videoMap.end(); it++) {
+		vpr.push_back(make_pair(it->first, it->second));
+	}
+	sort(vpr.begin(), vpr.end(), [](const pair<string, int>& p, const pair<string, int>& q) {
+		return p.second < q.second || (p.second == q.second && p.first < q.first);
+		});
+	vector<string> resultArray;
+	for (auto pair : vpr) {
+		resultArray.push_back(pair.first);
+	}
+	return resultArray;
+}
+
+

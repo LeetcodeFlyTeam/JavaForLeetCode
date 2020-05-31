@@ -21,4 +21,5 @@ public:
 	int uniquePaths(int m, int n);
 	int findJudge(int N, vector<vector<int>>& trust);
 	int findJudgeArrayCache(int N, vector<vector<int>>& trust);
+	vector<string> watchedVideosByFriends(vector<vector<string>>& watchedVideos, vector<vector<int>>& friends, int id, int level);
 };
