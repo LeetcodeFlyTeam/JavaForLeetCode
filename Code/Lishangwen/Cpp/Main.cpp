@@ -2,7 +2,9 @@
 #include "Main.h"
 int main(){
 	LeetCodeLib lib = LeetCodeLib();
-	cout << lib.uniquePaths(3, 2);
+	vector<vector<int>> a;
+	a.push_back({ 1,2 });
+	cout << lib.findJudgeArrayCache(2, a);
 	//numPairsDivisibleBy60Test(lib);
 }
 

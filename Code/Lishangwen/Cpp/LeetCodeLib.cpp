@@ -55,3 +55,32 @@ int LeetCodeLib::uniquePaths(int m, int n) {
 	}
 	return pathCache[m - 1][n - 1];
 }
+
+// 997. 找到小镇的法官map缓存
+int LeetCodeLib::findJudge(int N, vector<vector<int>>& trust) {
+	if (trust.size() == 0 && N == 1) return 1;
+	map<int, vector<int>> trustMap;
+	for (int i = 0; i < trust.size(); i++) {
+		trustMap[trust[i][0]] = trustMap.count(trust[i][0]) ? vector<int>{ trustMap[trust[i][0]][0] + 1, trustMap[trust[i][0]][1] } : vector<int>{1, 0};
+		trustMap[trust[i][1]] = trustMap.count(trust[i][1]) ? vector<int>{ trustMap[trust[i][1]][0] , trustMap[trust[i][1]][1]+1 } : vector<int>{ 0, 1};
+	}
+	for (auto& it : trustMap) {
+		if (it.second[0] == 0 && it.second[1] >= N - 1) return it.first;
+	}
+	return -1;
+}
+
+// 997. 找到小镇的法官map缓存 数组缓存
+int LeetCodeLib::findJudgeArrayCache(int N, vector<vector<int>>& trust) {
+	if (trust.size() == 0 && N == 1) return 1;
+	if (trust.size() < N - 1) return -1;
+	vector<vector<int>> trustCach(N+1,vector<int>{ 0,0 });
+	for (int i = 0; i < trust.size(); i++) {
+		trustCach[trust[i][0]][0]++;
+		trustCach[trust[i][1]][1]++;
+	}
+	for (int j = 0; j < trustCach.size();j++) {
+		if (trustCach[j][0] == 0 && trustCach[j][1] >= N - 1) return j;
+	}
+	return -1;
+}
