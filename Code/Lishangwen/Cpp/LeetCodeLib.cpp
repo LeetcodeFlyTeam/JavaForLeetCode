@@ -136,3 +136,58 @@ vector<string> LeetCodeLib::watchedVideosByFriends(vector<vector<string>>& watch
 }
 
 
+// 101.¶Ô³Æ¶þ²æÊ÷
+bool LeetCodeLib::isSymmetric(TreeNode* root) {
+	if (root->left == NULL || root->right == NULL) {
+		if (root->left == NULL && root->right == NULL)
+			return true;
+		else
+			return false;
+	}
+	queue<TreeNode*> leftQueue, rightQueue;
+	leftQueue.push(root->left);
+	rightQueue.push(root->right);
+	while (leftQueue.size() > 0 && rightQueue.size() > 0&&leftQueue.size()==rightQueue.size()) {
+		for (int i = 0; i < leftQueue.size(); i++) {
+			auto lNode = leftQueue.front();
+			leftQueue.pop();
+			auto rNode = rightQueue.front();
+			rightQueue.pop();
+			if (lNode->val != rNode->val) return false;
+			auto lLeftChild = lNode->left;
+			auto lRightChild = lNode->right;
+			auto rLeftChild = rNode->left;
+			auto rRithChild = rNode->right;
+			if (lLeftChild != NULL && rRithChild != NULL) {
+				if (lLeftChild->val == rRithChild->val) {
+					leftQueue.push(lLeftChild);
+					rightQueue.push(rRithChild);
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else if ((lLeftChild != NULL && rRithChild == NULL) || (lLeftChild == NULL && rRithChild != NULL)) {
+				return false;
+			}
+			if (lRightChild != NULL && rLeftChild != NULL) {
+				if (lRightChild->val == rLeftChild->val) {
+					leftQueue.push(lRightChild);
+					rightQueue.push(rLeftChild);
+				}
+				else
+				{
+					return false;
+				}
+			}
+			else if ((lRightChild != NULL && rLeftChild == NULL) || (lRightChild == NULL && rLeftChild != NULL)) {
+				return false;
+			}
+		}
+	}
+	if (leftQueue.size() == 0 && rightQueue.size() == 0)
+		return true;
+	else
+		return false;
+}
