@@ -3,7 +3,8 @@
 int main(){
 	
 	LeetCodeLib lib = LeetCodeLib();
-	
+	vector<int> input{ 2,1,2,0,1 };
+	int result = lib.maxProfit(input);
 	//numPairsDivisibleBy60Test(lib);
 }
 

@@ -191,3 +191,31 @@ bool LeetCodeLib::isSymmetric(TreeNode* root) {
 	else
 		return false;
 }
+
+
+// 122.买卖股票的最佳时机II
+int LeetCodeLib::maxProfit(vector<int>& prices){
+	if (prices.size() < 2) return 0;
+	int moneyCount = 0, topPrice = -1, bottomPrice = -1;
+	for (int i = 0; i < prices.size(); i++) {
+		if (i == 0) {
+			if (prices[i] <= prices[i + 1]) bottomPrice = prices[0];
+		}
+		else if (i > 0 && i < prices.size() - 1) {
+			if (prices[i] > prices[i + 1] && prices[i] >= prices[i - 1]) {
+				topPrice = prices[i];
+			}
+			else if (prices[i] <= prices[i + 1] && prices[i] < prices[i - 1]) {
+				bottomPrice = prices[i];
+			}
+		}
+		else if (i == prices.size() - 1) {
+			if (prices[i] >= prices[i-1]) topPrice = prices[i];
+		}
+		if (topPrice != -1 && bottomPrice != -1) {
+			moneyCount += topPrice - bottomPrice;
+			topPrice = bottomPrice = -1;
+		}
+	}
+	return moneyCount;
+}
