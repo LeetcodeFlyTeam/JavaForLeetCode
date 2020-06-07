@@ -1,0 +1,30 @@
+class Solution {
+ public int maxProfit(int[] prices) {
+        int length = prices.length;
+        int start = 0;
+        int end = 0;
+        int i = 1;
+        int maxProfit = 0;
+        while (end < length) {
+            if (end == length -1) {
+                if (prices[end] > prices[start]) {
+                    maxProfit += prices[end] - prices[start];
+                }
+                break;
+            } else if (prices[i] > prices [end]) {
+                if (prices[end] < prices[start]) {
+                   start +=1;
+                }
+                end = i;
+            } else {
+                if (prices[end] > prices[start]) {
+                    maxProfit += prices[end] - prices[start];
+                }
+                start = i;
+                end = i + 1;
+            }
+            i=end +1;
+        }
+        return maxProfit;
+    }
+}
