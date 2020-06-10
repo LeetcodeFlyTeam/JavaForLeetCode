@@ -24,4 +24,5 @@ public:
 	vector<string> watchedVideosByFriends(vector<vector<string>>& watchedVideos, vector<vector<int>>& friends, int id, int level);
 	bool isSymmetric(TreeNode* root);
 	int maxProfit(vector<int>& prices);
+	int searchInsert(vector<int>& nums, int target);
 };

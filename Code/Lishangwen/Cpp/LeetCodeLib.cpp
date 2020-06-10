@@ -219,3 +219,27 @@ int LeetCodeLib::maxProfit(vector<int>& prices){
 	}
 	return moneyCount;
 }
+
+// 35.À—À˜≤Â»ÎŒª÷√
+int LeetCodeLib::searchInsert(vector<int>& nums, int target){
+	if (nums.size() == 0) return 0;
+	int headPos = 0, endPos = nums.size() - 1;
+	while (headPos <= endPos) {
+		if (nums[headPos] == target) return headPos;
+		if (nums[endPos] == target) return endPos;
+		if (headPos == endPos) {
+			if (nums[headPos] > target)
+				return headPos;
+			else
+				return headPos + 1;
+		}
+		else if (headPos == endPos - 1) {
+			if (target > nums[headPos] && target < nums[endPos]) {
+				return headPos + 1;
+			}
+		}
+		if (nums[endPos] > target) endPos--;
+		if (nums[headPos] < target) headPos++;
+	}
+	return 0;
+}
