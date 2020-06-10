@@ -243,3 +243,17 @@ int LeetCodeLib::searchInsert(vector<int>& nums, int target){
 	}
 	return 0;
 }
+
+// 198. ¥Úº“ΩŸ…·
+int LeetCodeLib::rob(vector<int>& nums){
+	if (nums.size() == 0) return 0;
+	if (nums.size() == 1) return nums[0];
+	int robSumA=0, robSumB=0;
+	for (int i = 0; i < nums.size(); i++) {
+		if (i % 2 == 0)
+			robSumA = max(nums[i] + robSumA, robSumB);
+		else
+			robSumB = max(nums[i] + robSumB, robSumA);
+	}
+	return max(robSumA,robSumB);
+}

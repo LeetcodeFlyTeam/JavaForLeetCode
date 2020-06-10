@@ -25,4 +25,5 @@ public:
 	bool isSymmetric(TreeNode* root);
 	int maxProfit(vector<int>& prices);
 	int searchInsert(vector<int>& nums, int target);
+	int rob(vector<int>& nums);
 };
