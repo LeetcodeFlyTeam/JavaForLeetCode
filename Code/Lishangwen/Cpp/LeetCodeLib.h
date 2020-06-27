@@ -26,4 +26,5 @@ public:
 	int maxProfit(vector<int>& prices);
 	int searchInsert(vector<int>& nums, int target);
 	int rob(vector<int>& nums);
+	bool canWinNim(int n);
 };

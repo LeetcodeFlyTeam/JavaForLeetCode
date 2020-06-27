@@ -257,3 +257,8 @@ int LeetCodeLib::rob(vector<int>& nums){
 	}
 	return max(robSumA,robSumB);
 }
+
+// 292. Nim сно╥
+bool LeetCodeLib::canWinNim(int n) {
+	return n % 4 != 0;
+}
