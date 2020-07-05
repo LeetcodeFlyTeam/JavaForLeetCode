@@ -262,3 +262,98 @@ int LeetCodeLib::rob(vector<int>& nums){
 bool LeetCodeLib::canWinNim(int n) {
 	return n % 4 != 0;
 }
+
+// 8. 字符串转换整数 (atoi)
+int LeetCodeLib::myAtoi(string str){
+	map<string, int> numMap;
+	numMap["0"] = 0;
+	numMap["1"] = 1;
+	numMap["2"] = 2;
+	numMap["3"] = 3;
+	numMap["4"] = 4;
+	numMap["5"] = 5;
+	numMap["6"] = 6;
+	numMap["7"] = 7;
+	numMap["8"] = 8;
+	numMap["9"] = 9;
+	int sum = 0;
+	bool isBegain = false;
+	bool isPositive = true;
+	for (int i = 0; i < str.length(); i++) {
+		string curStr = str.substr(i, 1);
+		if (!isBegain) {
+			if (curStr != " " && numMap.count(curStr)<=0&& curStr !="-"&& curStr !="+") {
+				return 0;
+			}
+			else if (curStr == " ")
+			{
+				continue;
+			}
+			else if (curStr == "+")
+			{
+				isBegain = true;
+				continue;
+			}
+			else if (curStr == "-")
+			{
+				isBegain = true;
+				isPositive = false;
+				continue;
+			}
+			else if (numMap.count(curStr) > 0)
+			{
+				isBegain = true;
+				sum = numMap[curStr];
+				continue;
+			}
+		}
+		else {
+			if (numMap.count(curStr)>0)
+			{
+				if (isPositive)
+				{
+					if (sum>INT_MAX/10||(sum==INT_MAX/10&& numMap[curStr]>INT_MAX%10))
+					{
+						return INT_MAX;
+					}
+					else
+					{
+						sum = sum * 10 + numMap[curStr];
+					}
+				}
+				else
+				{
+					if (sum<INT_MIN/10||(sum==INT_MIN/10&& numMap[curStr]+ INT_MIN % 10 >0))
+					{
+						return INT_MIN;
+					}
+					else
+					{
+						sum = sum * 10 - numMap[curStr];
+					}
+				}
+			}
+			else
+			{
+				return sum;
+			}
+		}
+	}
+	return sum;
+}
+
+// 168. Excel表列名称
+string LeetCodeLib::convertToTitle(int n) {
+	string result = "";
+	while (n > 0) {
+		int tempNum = n % 26;
+		if (tempNum == 0) {
+			tempNum = 26;
+		}
+		n = (n-tempNum)/ 26;
+		string titleStr(1, tempNum + 64);
+		result += titleStr;
+	}
+	reverse(result.begin(), result.end());
+	return result;
+}

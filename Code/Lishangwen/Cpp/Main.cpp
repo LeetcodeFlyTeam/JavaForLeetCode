@@ -4,7 +4,8 @@ int main(){
 	
 	LeetCodeLib lib = LeetCodeLib();
 	vector<int> input{ 2,1,2,0,1 };
-	int result = lib.maxProfit(input);
+	auto result = lib.convertToTitle(701);
+	cout << result;
 	//numPairsDivisibleBy60Test(lib);
 }
 

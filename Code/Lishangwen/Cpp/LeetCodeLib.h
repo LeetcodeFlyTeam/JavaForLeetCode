@@ -2,8 +2,8 @@
 #include "vector"
 #include<algorithm>
 #include <iostream>
+#include "string.h"
 using namespace std;
-
 // Definition for a binary tree node.
 struct TreeNode {
 	int val;
@@ -27,4 +27,6 @@ public:
 	int searchInsert(vector<int>& nums, int target);
 	int rob(vector<int>& nums);
 	bool canWinNim(int n);
+	int myAtoi(string str);
+	string convertToTitle(int n);
 };
