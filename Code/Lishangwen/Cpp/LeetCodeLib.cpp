@@ -347,12 +347,9 @@ string LeetCodeLib::convertToTitle(int n) {
 	string result = "";
 	while (n > 0) {
 		int tempNum = n % 26;
-		if (tempNum == 0) {
-			tempNum = 26;
-		}
+		tempNum = (tempNum == 0) ? 26 : tempNum;
 		n = (n-tempNum)/ 26;
-		string titleStr(1, tempNum + 64);
-		result += titleStr;
+		result.push_back('A'+ tempNum-1);
 	}
 	reverse(result.begin(), result.end());
 	return result;
