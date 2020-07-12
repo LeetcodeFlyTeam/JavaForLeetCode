@@ -354,3 +354,23 @@ string LeetCodeLib::convertToTitle(int n) {
 	reverse(result.begin(), result.end());
 	return result;
 }
+
+// 剑指 Offer 59 - I. 滑动窗口的最大值
+vector<int> LeetCodeLib::maxSlidingWindow(vector<int>& nums, int k) {
+	vector<int> result;
+	if (nums.size() == 0) return result;
+	for (int i = 0; i <= nums.size() - k; i++) {
+		int tempMax = nums[i];
+		for (int j = i + 1; j < i + k; j++){
+			tempMax = max(tempMax, nums[j]);
+		}
+		result.push_back(tempMax);
+	}
+	return result;
+}
+
+//215. 数组中的第K个最大元素
+int findKthLargest(vector<int>& nums, int k) {
+	sort(nums.begin(), nums.end());
+	return nums[nums.size() - k];
+}

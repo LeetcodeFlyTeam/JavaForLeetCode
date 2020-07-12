@@ -29,4 +29,6 @@ public:
 	bool canWinNim(int n);
 	int myAtoi(string str);
 	string convertToTitle(int n);
+	vector<int> maxSlidingWindow(vector<int>& nums, int k);
+	int findKthLargest(vector<int>& nums, int k);
 };
