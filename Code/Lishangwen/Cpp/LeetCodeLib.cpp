@@ -407,14 +407,14 @@ bool LeetCodeLib::canFinish(int numCourses, vector<vector<int>>& prerequisites) 
 	queue<int> zeroIdegQueue;
 	for (int i = 0; i < indegress.size(); i++) {
 		if (indegress[i] == 0)
-			zeroIdegQueue.push(i);
+			zeroIdegQueue.push(i);    // 只能从入度为0的课程开始学
 	}
 	while (!zeroIdegQueue.empty()) {
 		int pre = zeroIdegQueue.front();
 		zeroIdegQueue.pop();
 		numCourses--;
 		for (int j = 0; j < G[pre].size(); j++) {
-			if (--indegress[G[pre][j]] == 0)
+			if (--indegress[G[pre][j]] == 0) // 上一门学了后，入度减小，只有减小到0后才能开始学习
 				zeroIdegQueue.push(G[pre][j]);
 		}
 	}
