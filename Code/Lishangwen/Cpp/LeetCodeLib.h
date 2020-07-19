@@ -31,4 +31,6 @@ public:
 	string convertToTitle(int n);
 	vector<int> maxSlidingWindow(vector<int>& nums, int k);
 	int findKthLargest(vector<int>& nums, int k);
+	vector<int> gardenNoAdj(int N, vector<vector<int>>& paths);
+	bool canFinish(int numCourses, vector<vector<int>>& prerequisites);
 };

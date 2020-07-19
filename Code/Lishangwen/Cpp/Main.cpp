@@ -3,9 +3,14 @@
 int main(){
 	
 	LeetCodeLib lib = LeetCodeLib();
-	vector<int> input{ 1,3,-1,-3,5,3,6,7 };
-	auto result = lib.maxSlidingWindow(input,3);
-	cout << result.size();
+	//vector<int> input{ 1,3,-1,-3,5,3,6,7 };
+	/*
+	3
+		[[1, 2], [2, 3], [3, 1]]
+	*/
+	vector<vector<int>> input{vector<int>{1, 0}};
+	auto result = lib.canFinish(2, input);
+	cout << result;
 	//numPairsDivisibleBy60Test(lib);
 }
 

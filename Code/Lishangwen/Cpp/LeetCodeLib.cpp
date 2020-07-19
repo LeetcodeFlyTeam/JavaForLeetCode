@@ -1,6 +1,7 @@
 #include "LeetCodeLib.h"
 #include "map"
 #include "queue"
+#include "set"
 int LeetCodeLib::numPairsDivisibleBy60(vector<int>& time) {
 	if (time.size() < 2) return 0;
 	int result = 0;
@@ -370,7 +371,52 @@ vector<int> LeetCodeLib::maxSlidingWindow(vector<int>& nums, int k) {
 }
 
 //215. 数组中的第K个最大元素
-int findKthLargest(vector<int>& nums, int k) {
+int LeetCodeLib::findKthLargest(vector<int>& nums, int k) {
 	sort(nums.begin(), nums.end());
 	return nums[nums.size() - k];
+}
+
+// 1042. 不邻接植花
+vector<int> LeetCodeLib::gardenNoAdj(int N, vector<vector<int>>& paths){
+	vector<vector<int>> G(N);
+	// 建立邻接表
+	for (int i = 0; i < paths.size(); i++) {
+		
+		G[paths[i][1] - 1].push_back(paths[i][0]-1);
+		G[paths[i][0] - 1].push_back(paths[i][1]-1);
+	}
+	vector<int> result(N,0);
+	for (int i = 0; i < N; i++) {
+		set<int> colors{1, 2, 3, 4};
+		for (int j = 0; j < G[i].size();j++) {
+			colors.erase(result[G[i][j]]);
+		}
+		result[i] = *(colors.begin());
+	}
+	return result;
+}
+
+//207. 课程表
+bool LeetCodeLib::canFinish(int numCourses, vector<vector<int>>& prerequisites) {
+	vector<vector<int>> G(numCourses);
+	vector<int> indegress(numCourses, 0);
+	for (int i = 0; i < prerequisites.size(); i++) {
+		indegress[prerequisites[i][0]]++;  // 计算入度
+		G[prerequisites[i][1]].push_back(prerequisites[i][0]);
+	}
+	queue<int> zeroIdegQueue;
+	for (int i = 0; i < indegress.size(); i++) {
+		if (indegress[i] == 0)
+			zeroIdegQueue.push(i);
+	}
+	while (!zeroIdegQueue.empty()) {
+		int pre = zeroIdegQueue.front();
+		zeroIdegQueue.pop();
+		numCourses--;
+		for (int j = 0; j < G[pre].size(); j++) {
+			if (--indegress[G[pre][j]] == 0)
+				zeroIdegQueue.push(G[pre][j]);
+		}
+	}
+	return numCourses == 0;
 }
