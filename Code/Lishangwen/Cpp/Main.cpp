@@ -10,7 +10,10 @@ int main(){
 	*/
 	vector<vector<int>> input{vector<int>{1, 0}};
 	auto result = lib.canFinish(2, input);
-	cout << result;
+	vector<int> test{ 1,2,3 };
+	int j = 0;
+	cout << test[++j]<<endl;
+	cout << result<<endl;
 	//numPairsDivisibleBy60Test(lib);
 }
 

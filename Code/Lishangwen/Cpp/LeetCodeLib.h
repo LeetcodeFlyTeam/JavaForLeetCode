@@ -33,4 +33,6 @@ public:
 	int findKthLargest(vector<int>& nums, int k);
 	vector<int> gardenNoAdj(int N, vector<vector<int>>& paths);
 	bool canFinish(int numCourses, vector<vector<int>>& prerequisites);
+	int removeDuplicates(vector<int>& nums);
+	int maxSubArray(vector<int>& nums);
 };

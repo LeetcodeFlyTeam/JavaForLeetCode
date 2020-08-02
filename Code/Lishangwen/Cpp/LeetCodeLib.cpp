@@ -420,3 +420,31 @@ bool LeetCodeLib::canFinish(int numCourses, vector<vector<int>>& prerequisites) 
 	}
 	return numCourses == 0;
 }
+
+
+
+// 80.删除排序数组中的重复项 II
+int LeetCodeLib::removeDuplicates(vector<int>& nums)
+{
+	if (nums.size() < 3) return nums.size();
+	int count = 1, j = 1;
+	for (int i = 1; i < nums.size(); i++) {
+		count = (nums[i] == nums[i - 1]) ? count + 1 : 1;
+		if (count < 3)
+			nums[j++] = nums[i];
+	}
+	return j;
+}
+
+// 53. 最大子序和
+int LeetCodeLib::maxSubArray(vector<int>& nums)
+{
+	int sum = nums[0];
+	int result = sum;
+	for (int i = 1; i < nums.size(); i++)
+	{
+		sum = max(nums[i], sum + nums[i]);
+		result = max(result, sum);
+	}
+	return result;
+}
