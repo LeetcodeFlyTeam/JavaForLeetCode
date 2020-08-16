@@ -2,6 +2,7 @@
 #include "map"
 #include "queue"
 #include "set"
+#include "stack"
 int LeetCodeLib::numPairsDivisibleBy60(vector<int>& time) {
 	if (time.size() < 2) return 0;
 	int result = 0;
@@ -447,4 +448,90 @@ int LeetCodeLib::maxSubArray(vector<int>& nums)
 		result = max(result, sum);
 	}
 	return result;
+}
+
+bool isOpString(string inStr) {
+	return inStr == "+" || inStr == "-" || inStr == "*" || inStr == "/";
+}
+
+int calculate(int a, int b, string opStr)
+{
+	if (opStr == "+")
+		return a + b;
+	else if (opStr == "-")
+		return a - b;
+	else if (opStr == "*")
+		return a * b;
+	else if (opStr == "/")
+		return a / b;
+	else
+		return 0;
+}
+
+int LeetCodeLib::evalRPN(vector<string>& tokens)
+{
+	stack<int> opStack;
+	for (int i = 0; i < tokens.size(); i++) {
+		string ele = tokens[i];
+		if (!isOpString(ele)) {
+			opStack.push(atoi(ele.c_str()));
+		}
+		else if(opStack.size()>=2)
+		{
+			int secondNum = opStack.top();
+			opStack.pop();
+			int firstNum = opStack.top();
+			opStack.pop();
+			opStack.push(calculate(firstNum, secondNum, ele));
+		}
+	}
+	if (opStack.size() > 0)
+		return opStack.top();
+	else
+		return 0;
+}
+
+
+
+// 155. ×îÐ¡Õ»
+void MinStack::push(int x)
+{
+	stackData.push_back(x);
+	minValue = (stackData.size() == 1) ? x : min(x, minValue);
+}
+
+void MinStack::pop()
+{
+	if (stackData.size() > 0) {
+		int topValue = top();
+		stackData.erase(stackData.end() - 1);
+		if (stackData.size() == 0)
+		{
+			minValue = 0;
+		}
+		else if(minValue==topValue)
+		{
+			minValue = stackData[0];
+			for (int e:stackData) {
+				minValue = min(e, minValue);
+			}
+		}
+	}
+}
+
+int MinStack::top()
+{
+	if (stackData.size() > 0) {
+		return stackData[stackData.size()-1];
+	}
+	else
+	{
+		return 0;
+	}
+	
+}
+
+int MinStack::getMin()
+{
+	return minValue;
 }

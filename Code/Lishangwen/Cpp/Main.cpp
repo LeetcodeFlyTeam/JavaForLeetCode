@@ -8,12 +8,9 @@ int main(){
 	3
 		[[1, 2], [2, 3], [3, 1]]
 	*/
-	vector<vector<int>> input{vector<int>{1, 0}};
-	auto result = lib.canFinish(2, input);
-	vector<int> test{ 1,2,3 };
-	int j = 0;
-	cout << test[++j]<<endl;
-	cout << result<<endl;
+	vector<string> input{ "4","13","5","/","+" };
+	int result = lib.evalRPN(input);
+	cout << result;
 	//numPairsDivisibleBy60Test(lib);
 }
 

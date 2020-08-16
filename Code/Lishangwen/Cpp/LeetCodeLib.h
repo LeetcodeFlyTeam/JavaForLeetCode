@@ -35,4 +35,23 @@ public:
 	bool canFinish(int numCourses, vector<vector<int>>& prerequisites);
 	int removeDuplicates(vector<int>& nums);
 	int maxSubArray(vector<int>& nums);
+	int evalRPN(vector<string>& tokens);
+};
+
+class MinStack {
+public:
+	/** initialize your data structure here. */
+	vector<int> stackData;
+	int minValue=0;
+	MinStack() {
+
+	}
+
+	void push(int x);
+
+	void pop();
+
+	int top();
+
+	int getMin();
 };
