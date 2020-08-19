@@ -491,7 +491,27 @@ int LeetCodeLib::evalRPN(vector<string>& tokens)
 		return 0;
 }
 
-
+// 14.最长公共前缀
+string LeetCodeLib::longestCommonPrefix(vector<string>& strs)
+{
+	if (strs.size() == 0) return "";
+	if (strs.size() == 1) return strs[0]; 
+	string firstStr = strs[0];
+	string result = "";
+	for (int i = 0; i < firstStr.length(); i++)
+	{
+		string tempStr = firstStr.substr(i, 1);
+		for (int j = 1; j < strs.size(); j++)
+		{
+			if (i > str[j].length()||firstStr[i]!=strs[j][i]) 
+			{
+				return result;
+			}
+		}
+		result = result + tempStr;
+	}
+	return result;
+}
 
 // 155. 最小栈
 void MinStack::push(int x)
@@ -499,6 +519,7 @@ void MinStack::push(int x)
 	stackData.push_back(x);
 	minValue = (stackData.size() == 1) ? x : min(x, minValue);
 }
+
 
 void MinStack::pop()
 {
