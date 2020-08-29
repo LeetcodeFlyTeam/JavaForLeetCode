@@ -36,7 +36,8 @@ public:
 	int removeDuplicates(vector<int>& nums);
 	int maxSubArray(vector<int>& nums);
 	int evalRPN(vector<string>& tokens);
-	string longestCommonPrefix(vector<string>& strs)£»
+	string longestCommonPrefix(vector<string>& strs);
+	bool isSubsequence(string s, string t);
 };
 
 class MinStack {

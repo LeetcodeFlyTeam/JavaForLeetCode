@@ -8,8 +8,7 @@ int main(){
 	3
 		[[1, 2], [2, 3], [3, 1]]
 	*/
-	vector<string> input{ "4","13","5","/","+" };
-	int result = lib.evalRPN(input);
+	auto result = lib.isSubsequence("abc", "ahbgdc");
 	cout << result;
 	//numPairsDivisibleBy60Test(lib);
 }
