@@ -513,6 +513,17 @@ string LeetCodeLib::longestCommonPrefix(vector<string>& strs)
 	return result;
 }
 
+// 81. 搜索旋转排序数组 II
+bool LeetCodeLib::search(vector<int>& nums, int target)
+{
+	for (int i = 0; i < nums.size(); i++) 
+	{
+		if (nums[i] == target) return true;
+	}
+	return false;
+}
+
+
 // 155. 最小栈
 void MinStack::push(int x)
 {
