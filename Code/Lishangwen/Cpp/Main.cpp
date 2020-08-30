@@ -8,8 +8,15 @@ int main(){
 	3
 		[[1, 2], [2, 3], [3, 1]]
 	*/
+	ListNode* head = &ListNode(1);
+	ListNode* cur = head;
+	cur->next = &ListNode(2);
+	cur = cur->next;
+	cur->next = &ListNode(3);
+	lib.myListNodeHead = head;
+	auto result1 = lib.getRandom();
 	auto result = lib.isSubsequence("abc", "ahbgdc");
-	cout << result;
+	cout << result1;
 	//numPairsDivisibleBy60Test(lib);
 }
 

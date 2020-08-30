@@ -11,6 +11,13 @@ struct TreeNode {
 	TreeNode *right;
 	TreeNode(int x) : val(x), left(NULL), right(NULL) {}
 };
+
+struct ListNode
+{
+	int val;
+	ListNode* next;
+	ListNode(int x) :val(x), next(NULL) {}
+};
 class LeetCodeLib
 {
 public:
@@ -38,6 +45,9 @@ public:
 	int evalRPN(vector<string>& tokens);
 	string longestCommonPrefix(vector<string>& strs);
 	bool isSubsequence(string s, string t);
+	bool search(vector<int>& nums, int target);
+	ListNode* myListNodeHead;
+	int getRandom();
 };
 
 class MinStack {

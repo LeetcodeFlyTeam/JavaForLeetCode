@@ -535,6 +535,23 @@ bool LeetCodeLib::isSubsequence(string s, string t)
 }
 
 
+// 382.链表随机节点
+int LeetCodeLib::getRandom()
+{
+	ListNode* cur = myListNodeHead;
+	int val = 0;
+	int count = 0;
+	while (cur)
+	{
+		count++;
+		int randNum = rand() % count + 1;
+		if (randNum == count) val = cur->val;
+		cur = cur->next;
+	}
+	return val;
+}
+
+
 // 155. 最小栈
 void MinStack::push(int x)
 {
