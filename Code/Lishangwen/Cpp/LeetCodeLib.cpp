@@ -503,7 +503,7 @@ string LeetCodeLib::longestCommonPrefix(vector<string>& strs)
 		string tempStr = firstStr.substr(i, 1);
 		for (int j = 1; j < strs.size(); j++)
 		{
-			if (i > str[j].length()||firstStr[i]!=strs[j][i]) 
+			if (i > strs[j].length()||firstStr[i]!=strs[j][i]) 
 			{
 				return result;
 			}
@@ -514,13 +514,24 @@ string LeetCodeLib::longestCommonPrefix(vector<string>& strs)
 }
 
 // 81. 搜索旋转排序数组 II
-bool LeetCodeLib::search(vector<int>& nums, int target)
+bool LeetCodeLib::search(vector<int> & nums, int target)
 {
-	for (int i = 0; i < nums.size(); i++) 
+	for (int i = 0; i < nums.size(); i++)
 	{
 		if (nums[i] == target) return true;
 	}
 	return false;
+}
+
+// 392. 判断子序列
+bool LeetCodeLib::isSubsequence(string s, string t)
+{
+	int findCount = 0;
+	for (int i = 0; i < t.length()&& findCount <s.length(); i++)
+	{
+		if (s[findCount] == t[i]) findCount++;
+	}
+	return findCount == s.length();
 }
 
 
