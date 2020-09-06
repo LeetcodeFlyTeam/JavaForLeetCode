@@ -48,6 +48,8 @@ public:
 	bool search(vector<int>& nums, int target);
 	ListNode* myListNodeHead;
 	int getRandom();
+	int trailingZeroes(int n);
+	void reorderList(ListNode* head);
 };
 
 class MinStack {

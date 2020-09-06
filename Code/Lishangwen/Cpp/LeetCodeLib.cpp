@@ -552,6 +552,41 @@ int LeetCodeLib::getRandom()
 }
 
 
+// 172.阶乘后的零
+int LeetCodeLib::trailingZeroes(int n)
+{
+	int zeroCount = 0;
+	while (n > 0)
+	{
+		n /= 5;
+		zeroCount += n;
+	}
+	return zeroCount;
+}
+
+// 143. 重排链表
+void LeetCodeLib::reorderList(ListNode* head)
+{
+	stack<ListNode*> nodeCache;
+	ListNode* insertPosPtr = head;  // 被插入位置
+	ListNode* tempNode = head;
+	while (tempNode)
+	{
+		nodeCache.push(tempNode);
+		tempNode = tempNode->next;
+	}
+	while (insertPosPtr&&insertPosPtr->next && insertPosPtr->next != nodeCache.top())
+	{
+		ListNode* moveNode = nodeCache.top();
+		nodeCache.pop();
+		nodeCache.top()->next = NULL;
+		moveNode->next = insertPosPtr->next;
+		insertPosPtr->next = moveNode;
+		insertPosPtr = moveNode->next;
+	}
+}
+
+
 // 155. 最小栈
 void MinStack::push(int x)
 {

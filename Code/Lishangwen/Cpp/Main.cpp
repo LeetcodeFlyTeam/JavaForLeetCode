@@ -8,15 +8,10 @@ int main(){
 	3
 		[[1, 2], [2, 3], [3, 1]]
 	*/
-	ListNode* head = &ListNode(1);
-	ListNode* cur = head;
-	cur->next = &ListNode(2);
-	cur = cur->next;
-	cur->next = &ListNode(3);
-	lib.myListNodeHead = head;
-	auto result1 = lib.getRandom();
-	auto result = lib.isSubsequence("abc", "ahbgdc");
-	cout << result1;
+	ListNode* head =new ListNode(1);
+	//genListNode(head, 2);
+	lib.reorderList(head);
+	cout << "OK";
 	//numPairsDivisibleBy60Test(lib);
 }
 
@@ -28,4 +23,14 @@ void numPairsDivisibleBy60Test(LeetCodeLib lib){
 }
 
 void checkSubarraySumTest(vector<int>& nums, int k){
+}
+
+void genListNode(ListNode*head,int len)
+{
+	ListNode* ptr = head;
+	for (int i = 2; i <= len; ++i) {
+		ListNode* pNewNode = new ListNode(i);
+		ptr->next = pNewNode;
+		ptr = pNewNode;
+	}
 }
