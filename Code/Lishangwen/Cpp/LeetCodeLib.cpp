@@ -29,7 +29,7 @@ bool LeetCodeLib::checkSubarraySum(vector<int>& nums, int k){
 	return false;
 }
 
-// ×î³¤Í¬ÖµÂ·¾¶µİ¹éº¯Êı
+// æœ€é•¿åŒå€¼è·¯å¾„é€’å½’å‡½æ•°
 int longetUnivalePathTraceback(TreeNode* node, int& result) {
 	if (node == NULL) return 0;
 	int leftLen = longetUnivalePathTraceback(node->left, result);
@@ -37,10 +37,10 @@ int longetUnivalePathTraceback(TreeNode* node, int& result) {
 	leftLen = (node->left != NULL && node->left->val == node->val) ? leftLen + 1 : 0;
 	rightLen = (node->right!=NULL && node->right->val == node->val) ? rightLen + 1 : 0;
 	result = max(result, leftLen + rightLen);
-	return max(leftLen, rightLen);   // ¸ù½ÚµãÏÂÖ»ÄÜÑ¡Ò»ÌõÂ·¾¶
+	return max(leftLen, rightLen);   // æ ¹èŠ‚ç‚¹ä¸‹åªèƒ½é€‰ä¸€æ¡è·¯å¾„
 }
 
-// 687.×î³¤Í¬ÖµÂ·¾¶
+// 687.æœ€é•¿åŒå€¼è·¯å¾„
 int LeetCodeLib::longestUnivaluePath(TreeNode* root) {
 	int result = 0;
 	longetUnivalePathTraceback(root, result);
@@ -48,7 +48,7 @@ int LeetCodeLib::longestUnivaluePath(TreeNode* root) {
 }
 
 
-// 62.²»Í¬Â·¾¶
+// 62.ä¸åŒè·¯å¾„
 int LeetCodeLib::uniquePaths(int m, int n) {
 	vector<vector<int>> pathCache(m,vector<int>(n,0));
 	for (int i = 0; i < m; i++) {
@@ -59,7 +59,7 @@ int LeetCodeLib::uniquePaths(int m, int n) {
 	return pathCache[m - 1][n - 1];
 }
 
-// 997. ÕÒµ½Ğ¡ÕòµÄ·¨¹Ùmap»º´æ
+// // 997. æ‰¾åˆ°å°é•‡çš„æ³•å®˜mapç¼“å­˜
 int LeetCodeLib::findJudge(int N, vector<vector<int>>& trust) {
 	if (trust.size() == 0 && N == 1) return 1;
 	map<int, vector<int>> trustMap;
@@ -73,7 +73,7 @@ int LeetCodeLib::findJudge(int N, vector<vector<int>>& trust) {
 	return -1;
 }
 
-// 997. ÕÒµ½Ğ¡ÕòµÄ·¨¹Ùmap»º´æ Êı×é»º´æ
+// 997. æ‰¾åˆ°å°é•‡çš„æ³•å®˜mapç¼“å­˜ æ•°ç»„ç¼“å­˜
 int LeetCodeLib::findJudgeArrayCache(int N, vector<vector<int>>& trust) {
 	if (trust.size() == 0 && N == 1) return 1;
 	if (trust.size() < N - 1) return -1;
@@ -89,7 +89,7 @@ int LeetCodeLib::findJudgeArrayCache(int N, vector<vector<int>>& trust) {
 }
 
 
-// 1311. »ñÈ¡ÄãºÃÓÑÒÑ¹Û¿´µÄÊÓÆµ
+// 1311. è·å–ä½ å¥½å‹å·²è§‚çœ‹çš„è§†é¢‘
 vector<string> LeetCodeLib::watchedVideosByFriends(vector<vector<string>>& watchedVideos, vector<vector<int>>& friends, int id, int level) {
 	vector<bool> visitTag(friends.size());
 	queue<int> q;
@@ -138,7 +138,7 @@ vector<string> LeetCodeLib::watchedVideosByFriends(vector<vector<string>>& watch
 }
 
 
-// 101.¶Ô³Æ¶ş²æÊ÷
+// 101.å¯¹ç§°äºŒå‰æ ‘
 bool LeetCodeLib::isSymmetric(TreeNode* root) {
 	if (root->left == NULL || root->right == NULL) {
 		if (root->left == NULL && root->right == NULL)
@@ -195,7 +195,7 @@ bool LeetCodeLib::isSymmetric(TreeNode* root) {
 }
 
 
-// 122.ÂòÂô¹ÉÆ±µÄ×î¼ÑÊ±»úII
+// 122.ä¹°å–è‚¡ç¥¨çš„æœ€ä½³æ—¶æœºII
 int LeetCodeLib::maxProfit(vector<int>& prices){
 	if (prices.size() < 2) return 0;
 	int moneyCount = 0, topPrice = -1, bottomPrice = -1;
@@ -222,7 +222,7 @@ int LeetCodeLib::maxProfit(vector<int>& prices){
 	return moneyCount;
 }
 
-// 35.ËÑË÷²åÈëÎ»ÖÃ
+// 35.æœç´¢æ’å…¥ä½ç½®
 int LeetCodeLib::searchInsert(vector<int>& nums, int target){
 	if (nums.size() == 0) return 0;
 	int headPos = 0, endPos = nums.size() - 1;
@@ -246,7 +246,7 @@ int LeetCodeLib::searchInsert(vector<int>& nums, int target){
 	return 0;
 }
 
-// 198. ´ò¼Ò½ÙÉá
+// 198. æ‰“å®¶åŠ«èˆ
 int LeetCodeLib::rob(vector<int>& nums){
 	if (nums.size() == 0) return 0;
 	if (nums.size() == 1) return nums[0];
@@ -260,12 +260,12 @@ int LeetCodeLib::rob(vector<int>& nums){
 	return max(robSumA,robSumB);
 }
 
-// 292. Nim ÓÎÏ·
+// 292. Nim æ¸¸æˆ
 bool LeetCodeLib::canWinNim(int n) {
 	return n % 4 != 0;
 }
 
-// 8. ×Ö·û´®×ª»»ÕûÊı (atoi)
+// 8. å­—ç¬¦ä¸²è½¬æ¢æ•´æ•° (atoi)
 int LeetCodeLib::myAtoi(string str){
 	map<string, int> numMap;
 	numMap["0"] = 0;
@@ -344,7 +344,7 @@ int LeetCodeLib::myAtoi(string str){
 	return sum;
 }
 
-// 168. Excel±íÁĞÃû³Æ
+// 168. Excelè¡¨åˆ—åç§°
 string LeetCodeLib::convertToTitle(int n) {
 	string result = "";
 	while (n > 0) {
@@ -357,7 +357,7 @@ string LeetCodeLib::convertToTitle(int n) {
 	return result;
 }
 
-// ½£Ö¸ Offer 59 - I. »¬¶¯´°¿ÚµÄ×î´óÖµ
+// å‰‘æŒ‡ Offer 59 - I. æ»‘åŠ¨çª—å£çš„æœ€å¤§å€¼
 vector<int> LeetCodeLib::maxSlidingWindow(vector<int>& nums, int k) {
 	vector<int> result;
 	if (nums.size() == 0) return result;
@@ -371,16 +371,16 @@ vector<int> LeetCodeLib::maxSlidingWindow(vector<int>& nums, int k) {
 	return result;
 }
 
-//215. Êı×éÖĞµÄµÚK¸ö×î´óÔªËØ
+//215. æ•°ç»„ä¸­çš„ç¬¬Kä¸ªæœ€å¤§å…ƒç´ 
 int LeetCodeLib::findKthLargest(vector<int>& nums, int k) {
 	sort(nums.begin(), nums.end());
 	return nums[nums.size() - k];
 }
 
-// 1042. ²»ÁÚ½ÓÖ²»¨
+// 1042. ä¸é‚»æ¥æ¤èŠ±
 vector<int> LeetCodeLib::gardenNoAdj(int N, vector<vector<int>>& paths){
 	vector<vector<int>> G(N);
-	// ½¨Á¢ÁÚ½Ó±í
+    // å»ºç«‹é‚»æ¥è¡¨
 	for (int i = 0; i < paths.size(); i++) {
 		
 		G[paths[i][1] - 1].push_back(paths[i][0]-1);
@@ -397,25 +397,25 @@ vector<int> LeetCodeLib::gardenNoAdj(int N, vector<vector<int>>& paths){
 	return result;
 }
 
-//207. ¿Î³Ì±í
+//207. è¯¾ç¨‹è¡¨
 bool LeetCodeLib::canFinish(int numCourses, vector<vector<int>>& prerequisites) {
 	vector<vector<int>> G(numCourses);
 	vector<int> indegress(numCourses, 0);
 	for (int i = 0; i < prerequisites.size(); i++) {
-		indegress[prerequisites[i][0]]++;  // ¼ÆËãÈë¶È
+		indegress[prerequisites[i][0]]++;  // è®¡ç®—å…¥åº¦
 		G[prerequisites[i][1]].push_back(prerequisites[i][0]);
 	}
 	queue<int> zeroIdegQueue;
 	for (int i = 0; i < indegress.size(); i++) {
 		if (indegress[i] == 0)
-			zeroIdegQueue.push(i);    // Ö»ÄÜ´ÓÈë¶ÈÎª0µÄ¿Î³Ì¿ªÊ¼Ñ§
+			zeroIdegQueue.push(i);   // åªèƒ½ä»å…¥åº¦ä¸º0çš„è¯¾ç¨‹å¼€å§‹å­¦
 	}
 	while (!zeroIdegQueue.empty()) {
 		int pre = zeroIdegQueue.front();
 		zeroIdegQueue.pop();
 		numCourses--;
 		for (int j = 0; j < G[pre].size(); j++) {
-			if (--indegress[G[pre][j]] == 0) // ÉÏÒ»ÃÅÑ§ÁËºó£¬Èë¶È¼õĞ¡£¬Ö»ÓĞ¼õĞ¡µ½0ºó²ÅÄÜ¿ªÊ¼Ñ§Ï°
+			if (--indegress[G[pre][j]] == 0) // ä¸Šä¸€é—¨å­¦äº†åï¼Œå…¥åº¦å‡å°ï¼Œåªæœ‰å‡å°åˆ°0åæ‰èƒ½å¼€å§‹å­¦ä¹ 
 				zeroIdegQueue.push(G[pre][j]);
 		}
 	}
@@ -424,7 +424,7 @@ bool LeetCodeLib::canFinish(int numCourses, vector<vector<int>>& prerequisites) 
 
 
 
-// 80.É¾³ıÅÅĞòÊı×éÖĞµÄÖØ¸´Ïî II
+// 80.åˆ é™¤æ’åºæ•°ç»„ä¸­çš„é‡å¤é¡¹ II
 int LeetCodeLib::removeDuplicates(vector<int>& nums)
 {
 	if (nums.size() < 3) return nums.size();
@@ -437,7 +437,7 @@ int LeetCodeLib::removeDuplicates(vector<int>& nums)
 	return j;
 }
 
-// 53. ×î´ó×ÓĞòºÍ
+// 53. æœ€å¤§å­åºå’Œ
 int LeetCodeLib::maxSubArray(vector<int>& nums)
 {
 	int sum = nums[0];
@@ -491,7 +491,7 @@ int LeetCodeLib::evalRPN(vector<string>& tokens)
 		return 0;
 }
 
-// 14.×î³¤¹«¹²Ç°×º
+// 14.æœ€é•¿å…¬å…±å‰ç¼€
 string LeetCodeLib::longestCommonPrefix(vector<string>& strs)
 {
 	if (strs.size() == 0) return "";
@@ -513,7 +513,7 @@ string LeetCodeLib::longestCommonPrefix(vector<string>& strs)
 	return result;
 }
 
-// 81. ËÑË÷Ğı×ªÅÅĞòÊı×é II
+// 81. æœç´¢æ—‹è½¬æ’åºæ•°ç»„ II
 bool LeetCodeLib::search(vector<int> & nums, int target)
 {
 	for (int i = 0; i < nums.size(); i++)
@@ -523,7 +523,7 @@ bool LeetCodeLib::search(vector<int> & nums, int target)
 	return false;
 }
 
-// 392. ÅĞ¶Ï×ÓĞòÁĞ
+// 392. åˆ¤æ–­å­åºåˆ—
 bool LeetCodeLib::isSubsequence(string s, string t)
 {
 	int findCount = 0;
@@ -535,7 +535,7 @@ bool LeetCodeLib::isSubsequence(string s, string t)
 }
 
 
-// 382.Á´±íËæ»ú½Úµã
+// 382.é“¾è¡¨éšæœºèŠ‚ç‚¹
 int LeetCodeLib::getRandom()
 {
 	ListNode* cur = myListNodeHead;
@@ -552,7 +552,7 @@ int LeetCodeLib::getRandom()
 }
 
 
-// 172.½×³ËºóµÄÁã
+// 172.é˜¶ä¹˜åçš„é›¶
 int LeetCodeLib::trailingZeroes(int n)
 {
 	int zeroCount = 0;
@@ -564,11 +564,11 @@ int LeetCodeLib::trailingZeroes(int n)
 	return zeroCount;
 }
 
-// 143. ÖØÅÅÁ´±í
+// 143. é‡æ’é“¾è¡¨
 void LeetCodeLib::reorderList(ListNode* head)
 {
 	stack<ListNode*> nodeCache;
-	ListNode* insertPosPtr = head;  // ±»²åÈëÎ»ÖÃ
+	ListNode* insertPosPtr = head;  // è¢«æ’å…¥ä½ç½®
 	ListNode* tempNode = head;
 	while (tempNode)
 	{
@@ -587,7 +587,7 @@ void LeetCodeLib::reorderList(ListNode* head)
 }
 
 
-// 155. ×îĞ¡Õ»
+// 155. æœ€å°æ ˆ
 void MinStack::push(int x)
 {
 	stackData.push_back(x);

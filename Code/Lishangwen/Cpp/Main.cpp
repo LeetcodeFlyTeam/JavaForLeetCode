@@ -11,7 +11,7 @@ int main(){
 	ListNode* head =new ListNode(1);
 	//genListNode(head, 2);
 	lib.reorderList(head);
-	cout << "OK";
+	cout << "OK"<<endl;
 	//numPairsDivisibleBy60Test(lib);
 }
 
