@@ -3,17 +3,20 @@
 int main(){
 	
 	LeetCodeLib lib = LeetCodeLib();
+
 	//vector<int> input{ 1,3,-1,-3,5,3,6,7 };
 	/*
 	3
 		[[1, 2], [2, 3], [3, 1]]
 	*/
-	ListNode* head =new ListNode(1);
+	//ListNode* head =new ListNode(1);
 	//genListNode(head, 2);
-	lib.reorderList(head);
+	//lib.reorderList(head);
+	vector<int> input{5,3,4,5};
+    auto result = lib.stoneGame(input);
 	cout << "OK"<<endl;
 	//numPairsDivisibleBy60Test(lib);
-	
+
 }
 
 

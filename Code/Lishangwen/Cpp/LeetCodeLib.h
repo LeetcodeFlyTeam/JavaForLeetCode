@@ -50,6 +50,7 @@ public:
 	int getRandom();
 	int trailingZeroes(int n);
 	void reorderList(ListNode* head);
+	bool stoneGame(vector<int>& piles);
 };
 
 class MinStack {
