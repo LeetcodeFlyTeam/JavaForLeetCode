@@ -48,6 +48,7 @@ public:
 	bool search(vector<int>& nums, int target);
 	ListNode* myListNodeHead;
 	int getRandom();
+	int countPrimes(int n);
 };
 
 class MinStack {

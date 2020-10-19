@@ -559,7 +559,6 @@ void MinStack::push(int x)
 	minValue = (stackData.size() == 1) ? x : min(x, minValue);
 }
 
-
 void MinStack::pop()
 {
 	if (stackData.size() > 0) {
@@ -594,4 +593,28 @@ int MinStack::top()
 int MinStack::getMin()
 {
 	return minValue;
+}
+
+
+bool isPrime(int n)
+{
+	if (n <= 3) return n > 1;
+	if (n % 2 == 0) return false;
+	for (int i = 2; i <= ceil(sqrt(n); i++))
+	{
+		if (n%i == 0) return false;
+	}
+	return true;
+}
+
+
+// 204. 计数质数--暴力解法
+int LeetCodeLib::countPrimes(int n)
+{
+	int count = 0;
+	for (int i = 2; i < n; i++)
+	{
+		if (isPrime(i)) count++;
+	}
+	return count;
 }
