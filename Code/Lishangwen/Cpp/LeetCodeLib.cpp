@@ -29,7 +29,7 @@ bool LeetCodeLib::checkSubarraySum(vector<int>& nums, int k){
 	return false;
 }
 
-// �ֵͬ·���ݹ麯��
+// 最长同值路径递归函数
 int longetUnivalePathTraceback(TreeNode* node, int& result) {
 	if (node == NULL) return 0;
 	int leftLen = longetUnivalePathTraceback(node->left, result);
@@ -37,10 +37,10 @@ int longetUnivalePathTraceback(TreeNode* node, int& result) {
 	leftLen = (node->left != NULL && node->left->val == node->val) ? leftLen + 1 : 0;
 	rightLen = (node->right!=NULL && node->right->val == node->val) ? rightLen + 1 : 0;
 	result = max(result, leftLen + rightLen);
-	return max(leftLen, rightLen);   // ���ڵ���ֻ��ѡһ��·��
+	return max(leftLen, rightLen);   // 根节点下只能选一条路�?
 }
 
-// 687.�ֵͬ·��
+// 687.最长同值路�?
 int LeetCodeLib::longestUnivaluePath(TreeNode* root) {
 	int result = 0;
 	longetUnivalePathTraceback(root, result);
@@ -48,7 +48,7 @@ int LeetCodeLib::longestUnivaluePath(TreeNode* root) {
 }
 
 
-// 62.��ͬ·��
+// 62.不同路径
 int LeetCodeLib::uniquePaths(int m, int n) {
 	vector<vector<int>> pathCache(m,vector<int>(n,0));
 	for (int i = 0; i < m; i++) {
@@ -59,7 +59,7 @@ int LeetCodeLib::uniquePaths(int m, int n) {
 	return pathCache[m - 1][n - 1];
 }
 
-// 997. �ҵ�С��ķ���map����
+// // 997. 找到小镇的法官map缓存
 int LeetCodeLib::findJudge(int N, vector<vector<int>>& trust) {
 	if (trust.size() == 0 && N == 1) return 1;
 	map<int, vector<int>> trustMap;
@@ -73,7 +73,7 @@ int LeetCodeLib::findJudge(int N, vector<vector<int>>& trust) {
 	return -1;
 }
 
-// 997. �ҵ�С��ķ���map���� ���黺��
+// 997. 找到小镇的法官map缓存 数组缓存
 int LeetCodeLib::findJudgeArrayCache(int N, vector<vector<int>>& trust) {
 	if (trust.size() == 0 && N == 1) return 1;
 	if (trust.size() < N - 1) return -1;
@@ -89,7 +89,7 @@ int LeetCodeLib::findJudgeArrayCache(int N, vector<vector<int>>& trust) {
 }
 
 
-// 1311. ��ȡ������ѹۿ�����Ƶ
+// 1311. 获取你好友已观看的视�?
 vector<string> LeetCodeLib::watchedVideosByFriends(vector<vector<string>>& watchedVideos, vector<vector<int>>& friends, int id, int level) {
 	vector<bool> visitTag(friends.size());
 	queue<int> q;
@@ -138,7 +138,7 @@ vector<string> LeetCodeLib::watchedVideosByFriends(vector<vector<string>>& watch
 }
 
 
-// 101.�Գƶ�����
+// 101.对称二叉�?
 bool LeetCodeLib::isSymmetric(TreeNode* root) {
 	if (root->left == NULL || root->right == NULL) {
 		if (root->left == NULL && root->right == NULL)
@@ -195,7 +195,7 @@ bool LeetCodeLib::isSymmetric(TreeNode* root) {
 }
 
 
-// 122.������Ʊ�����ʱ��II
+// 122.买卖股票的最佳时机II
 int LeetCodeLib::maxProfit(vector<int>& prices){
 	if (prices.size() < 2) return 0;
 	int moneyCount = 0, topPrice = -1, bottomPrice = -1;
@@ -222,7 +222,7 @@ int LeetCodeLib::maxProfit(vector<int>& prices){
 	return moneyCount;
 }
 
-// 35.��������λ��
+// 35.搜索插入位置
 int LeetCodeLib::searchInsert(vector<int>& nums, int target){
 	if (nums.size() == 0) return 0;
 	int headPos = 0, endPos = nums.size() - 1;
@@ -246,7 +246,7 @@ int LeetCodeLib::searchInsert(vector<int>& nums, int target){
 	return 0;
 }
 
-// 198. ��ҽ���
+// 198. 打家劫舍
 int LeetCodeLib::rob(vector<int>& nums){
 	if (nums.size() == 0) return 0;
 	if (nums.size() == 1) return nums[0];
@@ -260,12 +260,12 @@ int LeetCodeLib::rob(vector<int>& nums){
 	return max(robSumA,robSumB);
 }
 
-// 292. Nim ��Ϸ
+// 292. Nim 游戏
 bool LeetCodeLib::canWinNim(int n) {
 	return n % 4 != 0;
 }
 
-// 8. �ַ���ת������ (atoi)
+// 8. 字符串转换整�?(atoi)
 int LeetCodeLib::myAtoi(string str){
 	map<string, int> numMap;
 	numMap["0"] = 0;
@@ -344,7 +344,7 @@ int LeetCodeLib::myAtoi(string str){
 	return sum;
 }
 
-// 168. Excel��������
+// 168. Excel表列名称
 string LeetCodeLib::convertToTitle(int n) {
 	string result = "";
 	while (n > 0) {
@@ -357,7 +357,7 @@ string LeetCodeLib::convertToTitle(int n) {
 	return result;
 }
 
-// ��ָ Offer 59 - I. �������ڵ����ֵ
+// 剑指 Offer 59 - I. 滑动窗口的最大�?
 vector<int> LeetCodeLib::maxSlidingWindow(vector<int>& nums, int k) {
 	vector<int> result;
 	if (nums.size() == 0) return result;
@@ -371,16 +371,16 @@ vector<int> LeetCodeLib::maxSlidingWindow(vector<int>& nums, int k) {
 	return result;
 }
 
-//215. �����еĵ�K�����Ԫ��
+//215. 数组中的第K个最大元�?
 int LeetCodeLib::findKthLargest(vector<int>& nums, int k) {
 	sort(nums.begin(), nums.end());
 	return nums[nums.size() - k];
 }
 
-// 1042. ���ڽ�ֲ��
+// 1042. 不邻接植�?
 vector<int> LeetCodeLib::gardenNoAdj(int N, vector<vector<int>>& paths){
 	vector<vector<int>> G(N);
-	// �����ڽӱ�
+    // 建立邻接�?
 	for (int i = 0; i < paths.size(); i++) {
 		
 		G[paths[i][1] - 1].push_back(paths[i][0]-1);
@@ -397,25 +397,25 @@ vector<int> LeetCodeLib::gardenNoAdj(int N, vector<vector<int>>& paths){
 	return result;
 }
 
-//207. �γ̱�
+//207. 课程�?
 bool LeetCodeLib::canFinish(int numCourses, vector<vector<int>>& prerequisites) {
 	vector<vector<int>> G(numCourses);
 	vector<int> indegress(numCourses, 0);
 	for (int i = 0; i < prerequisites.size(); i++) {
-		indegress[prerequisites[i][0]]++;  // �������
+		indegress[prerequisites[i][0]]++;  // 计算入度
 		G[prerequisites[i][1]].push_back(prerequisites[i][0]);
 	}
 	queue<int> zeroIdegQueue;
 	for (int i = 0; i < indegress.size(); i++) {
 		if (indegress[i] == 0)
-			zeroIdegQueue.push(i);    // ֻ�ܴ����Ϊ0�Ŀγ̿�ʼѧ
+			zeroIdegQueue.push(i);   // 只能从入度为0的课程开始学
 	}
 	while (!zeroIdegQueue.empty()) {
 		int pre = zeroIdegQueue.front();
 		zeroIdegQueue.pop();
 		numCourses--;
 		for (int j = 0; j < G[pre].size(); j++) {
-			if (--indegress[G[pre][j]] == 0) // ��һ��ѧ�˺���ȼ�С��ֻ�м�С��0����ܿ�ʼѧϰ
+			if (--indegress[G[pre][j]] == 0) // 上一门学了后，入度减小，只有减小�?后才能开始学�?
 				zeroIdegQueue.push(G[pre][j]);
 		}
 	}
@@ -424,7 +424,7 @@ bool LeetCodeLib::canFinish(int numCourses, vector<vector<int>>& prerequisites) 
 
 
 
-// 80.ɾ�����������е��ظ��� II
+// 80.删除排序数组中的重复�?II
 int LeetCodeLib::removeDuplicates(vector<int>& nums)
 {
 	if (nums.size() < 3) return nums.size();
@@ -437,7 +437,7 @@ int LeetCodeLib::removeDuplicates(vector<int>& nums)
 	return j;
 }
 
-// 53. ��������
+// 53. 最大子序和
 int LeetCodeLib::maxSubArray(vector<int>& nums)
 {
 	int sum = nums[0];
@@ -491,7 +491,7 @@ int LeetCodeLib::evalRPN(vector<string>& tokens)
 		return 0;
 }
 
-// 14.�����ǰ׺
+// 14.最长公共前缀
 string LeetCodeLib::longestCommonPrefix(vector<string>& strs)
 {
 	if (strs.size() == 0) return "";
@@ -513,7 +513,7 @@ string LeetCodeLib::longestCommonPrefix(vector<string>& strs)
 	return result;
 }
 
-// 81. ������ת�������� II
+// 81. 搜索旋转排序数组 II
 bool LeetCodeLib::search(vector<int> & nums, int target)
 {
 	for (int i = 0; i < nums.size(); i++)
@@ -523,7 +523,7 @@ bool LeetCodeLib::search(vector<int> & nums, int target)
 	return false;
 }
 
-// 392. �ж�������
+// 392. 判断子序�?
 bool LeetCodeLib::isSubsequence(string s, string t)
 {
 	int findCount = 0;
@@ -535,7 +535,7 @@ bool LeetCodeLib::isSubsequence(string s, string t)
 }
 
 
-// 382.��������ڵ�
+// 382.链表随机节点
 int LeetCodeLib::getRandom()
 {
 	ListNode* cur = myListNodeHead;
@@ -552,7 +552,57 @@ int LeetCodeLib::getRandom()
 }
 
 
-// 155. ��Сջ
+// 172.阶乘后的�?
+int LeetCodeLib::trailingZeroes(int n)
+{
+	int zeroCount = 0;
+	while (n > 0)
+	{
+		n /= 5;
+		zeroCount += n;
+	}
+	return zeroCount;
+}
+
+// 143. 重排链表
+void LeetCodeLib::reorderList(ListNode* head)
+{
+	stack<ListNode*> nodeCache;
+	ListNode* insertPosPtr = head;  // 被插入位�?
+	ListNode* tempNode = head;
+	while (tempNode)
+	{
+		nodeCache.push(tempNode);
+		tempNode = tempNode->next;
+	}
+	while (insertPosPtr&&insertPosPtr->next && insertPosPtr->next != nodeCache.top())
+	{
+		ListNode* moveNode = nodeCache.top();
+		nodeCache.pop();
+		nodeCache.top()->next = NULL;
+		moveNode->next = insertPosPtr->next;
+		insertPosPtr->next = moveNode;
+		insertPosPtr = moveNode->next;
+	}
+}
+
+// 877. 石子游戏 dp
+bool LeetCodeLib::stoneGame(vector<int> &piles) {
+    vector<vector<int>> dp(piles.size(),vector<int>(piles.size(),0));
+    for(int i=0;i<piles.size();i++)
+        dp[i][i]=piles[i];
+    for(int i=0;i<piles.size()-1;i++)
+    {
+        for(int j=i+1;j<piles.size();j++)
+        {
+            dp[i][j]=max(piles[i]-dp[i+1][j],piles[j]-dp[i][j-1]);
+        }
+    }
+    return dp[0][piles.size()-1]>0;
+}
+
+
+// 155. 最小栈
 void MinStack::push(int x)
 {
 	stackData.push_back(x);
