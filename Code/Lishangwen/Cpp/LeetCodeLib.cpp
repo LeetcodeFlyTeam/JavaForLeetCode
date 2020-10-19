@@ -29,7 +29,7 @@ bool LeetCodeLib::checkSubarraySum(vector<int>& nums, int k){
 	return false;
 }
 
-// 最长同值路径递归函数
+// 鏈€闀垮悓鍊艰矾寰勯€掑綊鍑芥暟
 int longetUnivalePathTraceback(TreeNode* node, int& result) {
 	if (node == NULL) return 0;
 	int leftLen = longetUnivalePathTraceback(node->left, result);
@@ -37,10 +37,10 @@ int longetUnivalePathTraceback(TreeNode* node, int& result) {
 	leftLen = (node->left != NULL && node->left->val == node->val) ? leftLen + 1 : 0;
 	rightLen = (node->right!=NULL && node->right->val == node->val) ? rightLen + 1 : 0;
 	result = max(result, leftLen + rightLen);
-	return max(leftLen, rightLen);   // 根节点下只能选一条路�?
+	return max(leftLen, rightLen);   // 鏍硅妭鐐逛笅鍙兘閫変竴鏉¤矾寰?
 }
 
-// 687.最长同值路�?
+// 687.鏈€闀垮悓鍊艰矾寰?
 int LeetCodeLib::longestUnivaluePath(TreeNode* root) {
 	int result = 0;
 	longetUnivalePathTraceback(root, result);
@@ -48,7 +48,7 @@ int LeetCodeLib::longestUnivaluePath(TreeNode* root) {
 }
 
 
-// 62.不同路径
+// 62.涓嶅悓璺緞
 int LeetCodeLib::uniquePaths(int m, int n) {
 	vector<vector<int>> pathCache(m,vector<int>(n,0));
 	for (int i = 0; i < m; i++) {
@@ -59,7 +59,7 @@ int LeetCodeLib::uniquePaths(int m, int n) {
 	return pathCache[m - 1][n - 1];
 }
 
-// // 997. 找到小镇的法官map缓存
+// // 997. 鎵惧埌灏忛晣鐨勬硶瀹榤ap缂撳瓨
 int LeetCodeLib::findJudge(int N, vector<vector<int>>& trust) {
 	if (trust.size() == 0 && N == 1) return 1;
 	map<int, vector<int>> trustMap;
@@ -73,7 +73,7 @@ int LeetCodeLib::findJudge(int N, vector<vector<int>>& trust) {
 	return -1;
 }
 
-// 997. 找到小镇的法官map缓存 数组缓存
+// 997. 鎵惧埌灏忛晣鐨勬硶瀹榤ap缂撳瓨 鏁扮粍缂撳瓨
 int LeetCodeLib::findJudgeArrayCache(int N, vector<vector<int>>& trust) {
 	if (trust.size() == 0 && N == 1) return 1;
 	if (trust.size() < N - 1) return -1;
@@ -89,7 +89,7 @@ int LeetCodeLib::findJudgeArrayCache(int N, vector<vector<int>>& trust) {
 }
 
 
-// 1311. 获取你好友已观看的视�?
+// 1311. 鑾峰彇浣犲ソ鍙嬪凡瑙傜湅鐨勮棰?
 vector<string> LeetCodeLib::watchedVideosByFriends(vector<vector<string>>& watchedVideos, vector<vector<int>>& friends, int id, int level) {
 	vector<bool> visitTag(friends.size());
 	queue<int> q;
@@ -138,7 +138,7 @@ vector<string> LeetCodeLib::watchedVideosByFriends(vector<vector<string>>& watch
 }
 
 
-// 101.对称二叉�?
+// 101.瀵圭О浜屽弶鏍?
 bool LeetCodeLib::isSymmetric(TreeNode* root) {
 	if (root->left == NULL || root->right == NULL) {
 		if (root->left == NULL && root->right == NULL)
@@ -195,7 +195,7 @@ bool LeetCodeLib::isSymmetric(TreeNode* root) {
 }
 
 
-// 122.买卖股票的最佳时机II
+// 122.涔板崠鑲＄エ鐨勬渶浣虫椂鏈篒I
 int LeetCodeLib::maxProfit(vector<int>& prices){
 	if (prices.size() < 2) return 0;
 	int moneyCount = 0, topPrice = -1, bottomPrice = -1;
@@ -222,7 +222,7 @@ int LeetCodeLib::maxProfit(vector<int>& prices){
 	return moneyCount;
 }
 
-// 35.搜索插入位置
+// 35.鎼滅储鎻掑叆浣嶇疆
 int LeetCodeLib::searchInsert(vector<int>& nums, int target){
 	if (nums.size() == 0) return 0;
 	int headPos = 0, endPos = nums.size() - 1;
@@ -246,7 +246,7 @@ int LeetCodeLib::searchInsert(vector<int>& nums, int target){
 	return 0;
 }
 
-// 198. 打家劫舍
+// 198. 鎵撳鍔垗
 int LeetCodeLib::rob(vector<int>& nums){
 	if (nums.size() == 0) return 0;
 	if (nums.size() == 1) return nums[0];
@@ -260,12 +260,12 @@ int LeetCodeLib::rob(vector<int>& nums){
 	return max(robSumA,robSumB);
 }
 
-// 292. Nim 游戏
+// 292. Nim 娓告垙
 bool LeetCodeLib::canWinNim(int n) {
 	return n % 4 != 0;
 }
 
-// 8. 字符串转换整�?(atoi)
+// 8. 瀛楃涓茶浆鎹㈡暣鏁?(atoi)
 int LeetCodeLib::myAtoi(string str){
 	map<string, int> numMap;
 	numMap["0"] = 0;
@@ -344,7 +344,7 @@ int LeetCodeLib::myAtoi(string str){
 	return sum;
 }
 
-// 168. Excel表列名称
+// 168. Excel琛ㄥ垪鍚嶇О
 string LeetCodeLib::convertToTitle(int n) {
 	string result = "";
 	while (n > 0) {
@@ -357,7 +357,7 @@ string LeetCodeLib::convertToTitle(int n) {
 	return result;
 }
 
-// 剑指 Offer 59 - I. 滑动窗口的最大�?
+// 鍓戞寚 Offer 59 - I. 婊戝姩绐楀彛鐨勬渶澶у€?
 vector<int> LeetCodeLib::maxSlidingWindow(vector<int>& nums, int k) {
 	vector<int> result;
 	if (nums.size() == 0) return result;
@@ -371,16 +371,16 @@ vector<int> LeetCodeLib::maxSlidingWindow(vector<int>& nums, int k) {
 	return result;
 }
 
-//215. 数组中的第K个最大元�?
+//215. 鏁扮粍涓殑绗琄涓渶澶у厓绱?
 int LeetCodeLib::findKthLargest(vector<int>& nums, int k) {
 	sort(nums.begin(), nums.end());
 	return nums[nums.size() - k];
 }
 
-// 1042. 不邻接植�?
+// 1042. 涓嶉偦鎺ユ鑺?
 vector<int> LeetCodeLib::gardenNoAdj(int N, vector<vector<int>>& paths){
 	vector<vector<int>> G(N);
-    // 建立邻接�?
+    // 寤虹珛閭绘帴琛?
 	for (int i = 0; i < paths.size(); i++) {
 		
 		G[paths[i][1] - 1].push_back(paths[i][0]-1);
@@ -397,25 +397,25 @@ vector<int> LeetCodeLib::gardenNoAdj(int N, vector<vector<int>>& paths){
 	return result;
 }
 
-//207. 课程�?
+//207. 璇剧▼琛?
 bool LeetCodeLib::canFinish(int numCourses, vector<vector<int>>& prerequisites) {
 	vector<vector<int>> G(numCourses);
 	vector<int> indegress(numCourses, 0);
 	for (int i = 0; i < prerequisites.size(); i++) {
-		indegress[prerequisites[i][0]]++;  // 计算入度
+		indegress[prerequisites[i][0]]++;  // 璁＄畻鍏ュ害
 		G[prerequisites[i][1]].push_back(prerequisites[i][0]);
 	}
 	queue<int> zeroIdegQueue;
 	for (int i = 0; i < indegress.size(); i++) {
 		if (indegress[i] == 0)
-			zeroIdegQueue.push(i);   // 只能从入度为0的课程开始学
+			zeroIdegQueue.push(i);   // 鍙兘浠庡叆搴︿负0鐨勮绋嬪紑濮嬪
 	}
 	while (!zeroIdegQueue.empty()) {
 		int pre = zeroIdegQueue.front();
 		zeroIdegQueue.pop();
 		numCourses--;
 		for (int j = 0; j < G[pre].size(); j++) {
-			if (--indegress[G[pre][j]] == 0) // 上一门学了后，入度减小，只有减小�?后才能开始学�?
+			if (--indegress[G[pre][j]] == 0) // 涓婁竴闂ㄥ浜嗗悗锛屽叆搴﹀噺灏忥紝鍙湁鍑忓皬鍒?鍚庢墠鑳藉紑濮嬪涔?
 				zeroIdegQueue.push(G[pre][j]);
 		}
 	}
@@ -424,7 +424,7 @@ bool LeetCodeLib::canFinish(int numCourses, vector<vector<int>>& prerequisites) 
 
 
 
-// 80.删除排序数组中的重复�?II
+// 80.鍒犻櫎鎺掑簭鏁扮粍涓殑閲嶅椤?II
 int LeetCodeLib::removeDuplicates(vector<int>& nums)
 {
 	if (nums.size() < 3) return nums.size();
@@ -437,7 +437,7 @@ int LeetCodeLib::removeDuplicates(vector<int>& nums)
 	return j;
 }
 
-// 53. 最大子序和
+// 53. 鏈€澶у瓙搴忓拰
 int LeetCodeLib::maxSubArray(vector<int>& nums)
 {
 	int sum = nums[0];
@@ -491,7 +491,7 @@ int LeetCodeLib::evalRPN(vector<string>& tokens)
 		return 0;
 }
 
-// 14.最长公共前缀
+// 14.鏈€闀垮叕鍏卞墠缂€
 string LeetCodeLib::longestCommonPrefix(vector<string>& strs)
 {
 	if (strs.size() == 0) return "";
@@ -513,7 +513,7 @@ string LeetCodeLib::longestCommonPrefix(vector<string>& strs)
 	return result;
 }
 
-// 81. 搜索旋转排序数组 II
+// 81. 鎼滅储鏃嬭浆鎺掑簭鏁扮粍 II
 bool LeetCodeLib::search(vector<int> & nums, int target)
 {
 	for (int i = 0; i < nums.size(); i++)
@@ -523,7 +523,7 @@ bool LeetCodeLib::search(vector<int> & nums, int target)
 	return false;
 }
 
-// 392. 判断子序�?
+// 392. 鍒ゆ柇瀛愬簭鍒?
 bool LeetCodeLib::isSubsequence(string s, string t)
 {
 	int findCount = 0;
@@ -535,7 +535,7 @@ bool LeetCodeLib::isSubsequence(string s, string t)
 }
 
 
-// 382.链表随机节点
+// 382.閾捐〃闅忔満鑺傜偣
 int LeetCodeLib::getRandom()
 {
 	ListNode* cur = myListNodeHead;
@@ -552,7 +552,7 @@ int LeetCodeLib::getRandom()
 }
 
 
-// 172.阶乘后的�?
+// 172.闃朵箻鍚庣殑闆?
 int LeetCodeLib::trailingZeroes(int n)
 {
 	int zeroCount = 0;
@@ -564,11 +564,11 @@ int LeetCodeLib::trailingZeroes(int n)
 	return zeroCount;
 }
 
-// 143. 重排链表
+// 143. 閲嶆帓閾捐〃
 void LeetCodeLib::reorderList(ListNode* head)
 {
 	stack<ListNode*> nodeCache;
-	ListNode* insertPosPtr = head;  // 被插入位�?
+	ListNode* insertPosPtr = head;  // 琚彃鍏ヤ綅缃?
 	ListNode* tempNode = head;
 	while (tempNode)
 	{
@@ -586,7 +586,7 @@ void LeetCodeLib::reorderList(ListNode* head)
 	}
 }
 
-// 877. 石子游戏 dp
+// 877. 鐭冲瓙娓告垙 dp
 bool LeetCodeLib::stoneGame(vector<int> &piles) {
     vector<vector<int>> dp(piles.size(),vector<int>(piles.size(),0));
     for(int i=0;i<piles.size();i++)
@@ -602,7 +602,7 @@ bool LeetCodeLib::stoneGame(vector<int> &piles) {
 }
 
 
-// 155. 最小栈
+// 155. 鏈€灏忔爤
 void MinStack::push(int x)
 {
 	stackData.push_back(x);
@@ -650,7 +650,8 @@ bool isPrime(int n)
 {
 	if (n <= 3) return n > 1;
 	if (n % 2 == 0) return false;
-	for (int i = 2; i <= ceil(sqrt(n); i++))
+	int sqrtValue = ceil(sqrt(n));
+	for (int i = 2; i <= sqrtValue; i++)
 	{
 		if (n%i == 0) return false;
 	}
@@ -658,7 +659,7 @@ bool isPrime(int n)
 }
 
 
-// 204. ��������--�����ⷨ
+// 204. 计数质数--暴力解法
 int LeetCodeLib::countPrimes(int n)
 {
 	int count = 0;

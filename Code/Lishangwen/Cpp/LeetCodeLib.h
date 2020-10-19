@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "vector"
 #include<algorithm>
 #include <iostream>
@@ -21,7 +21,7 @@ struct ListNode
 class LeetCodeLib
 {
 public:
-	// 1010. ×Ü³ÖĞøÊ±¼ä¿É±» 60 Õû³ıµÄ¸èÇú
+	// 1010. æ€»æŒç»­æ—¶é—´å¯è¢« 60 æ•´é™¤çš„æ­Œæ›²
 	int numPairsDivisibleBy60(vector<int>& time);
 	bool checkSubarraySum(vector<int>& nums, int k);
 	int longestUnivaluePath(TreeNode* root);
